@@ -17,7 +17,7 @@ class LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final emailField = TextField(
       controller: emailController,
-      obscureText: true,
+      obscureText: false,
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -59,10 +59,11 @@ class LoginPageState extends State<LoginPage> {
     );
 
     return Scaffold(
+      backgroundColor: Colors.white24,
       body: SingleChildScrollView(
       child: Center(
         child: Container(
-          color: Colors.white,
+          color: Colors.white24,
           child: Padding(
             padding: const EdgeInsets.all(36.0),
             child: Column(
@@ -85,7 +86,7 @@ class LoginPageState extends State<LoginPage> {
                 ),
                 loginButon,
                 SizedBox(
-                  height: 15.0,
+                  height: 192.0,
                 ),
               ],
             ),

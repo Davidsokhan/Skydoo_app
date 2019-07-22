@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './pages/login_page.dart';
+import './pages/home_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Skydoo communication',
-      home: new LoginPage(),
+      home: new HomePage(),
     );
   }
 }
