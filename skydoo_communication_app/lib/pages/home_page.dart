@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
+import '../chat/chat_pages.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          //onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new MainPage()), (Route route) => route == null),
+          onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new Chat()), (Route route) => route == null),
           child: Text("User",
               textAlign: TextAlign.center,
               style: style.copyWith(
