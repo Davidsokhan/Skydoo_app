@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './main_page.dart';
 import './show_page.dart';
+import 'pro_menu.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -46,7 +47,7 @@ class LoginPageState extends State<LoginPage> {
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
           if (passwordController.text == "admin" && emailController.text == "admin") {
-            Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new MainPage()), (Route route) => route == null);
+            Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new ProPage()), (Route route) => route == null);
           }
           else {
           }

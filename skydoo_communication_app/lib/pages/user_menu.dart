@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:skydoo_communication_app/pages/user_menu.dart';
-import 'login_page.dart';
-import 'user_menu.dart';
+import '../chat/chat_pages.dart';
 
-class HomePage extends StatelessWidget {
+class UserPage extends StatelessWidget {
 
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 
   @override
   Widget build(BuildContext context) {
-    final userButton = Material(
+    final chatButton = Material(
         elevation: 5.0,
         borderRadius: BorderRadius.circular(30.0),
         color: Color(0xff01A0C7),
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new UserPage()), (Route route) => route == null),
-          child: Text("User",
+          onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new Chat()), (Route route) => route == null),
+          child: Text("Chat",
               textAlign: TextAlign.center,
               style: style.copyWith(
                   color: Colors.white, fontWeight: FontWeight.bold)
@@ -25,15 +23,15 @@ class HomePage extends StatelessWidget {
         ),
     );
 
-    final proButton = Material(
+    final helpButton = Material(
         elevation: 5.0,
         borderRadius: BorderRadius.circular(30.0),
         color: Color(0xff01A0C7),
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new LoginPage()), (Route route) => route == null),
-          child: Text("Pro",
+          //onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new Page()), (Route route) => route == null),
+          child: Text("Help",
               textAlign: TextAlign.center,
               style: style.copyWith(
                   color: Colors.white, fontWeight: FontWeight.bold)
@@ -77,11 +75,11 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 45.0),
-                userButton,
+                chatButton,
                 SizedBox(height: 25.0),
-                proButton,
+                helpButton,
                 SizedBox(height: 25.0),
-                optionButton,
+                //optionButton,
                 SizedBox(
                   height: 202.0,
                 ),

@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:skydoo_communication_app/pages/user_menu.dart';
 import 'login_page.dart';
-import 'user_menu.dart';
+import 'main_page.dart';
 
-class HomePage extends StatelessWidget {
+class ProPage extends StatelessWidget {
 
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 
   @override
   Widget build(BuildContext context) {
-    final userButton = Material(
+    final presentaionButton = Material(
         elevation: 5.0,
         borderRadius: BorderRadius.circular(30.0),
         color: Color(0xff01A0C7),
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new UserPage()), (Route route) => route == null),
+          onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new MainPage()), (Route route) => route == null),
           child: Text("User",
               textAlign: TextAlign.center,
               style: style.copyWith(
@@ -25,14 +24,14 @@ class HomePage extends StatelessWidget {
         ),
     );
 
-    final proButton = Material(
+    final informationButton = Material(
         elevation: 5.0,
         borderRadius: BorderRadius.circular(30.0),
         color: Color(0xff01A0C7),
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new LoginPage()), (Route route) => route == null),
+          //onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new LoginPage()), (Route route) => route == null),
           child: Text("Pro",
               textAlign: TextAlign.center,
               style: style.copyWith(
@@ -77,11 +76,11 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 45.0),
-                userButton,
+                presentaionButton,
                 SizedBox(height: 25.0),
-                proButton,
+                informationButton,
                 SizedBox(height: 25.0),
-                optionButton,
+                //optionButton,
                 SizedBox(
                   height: 202.0,
                 ),
