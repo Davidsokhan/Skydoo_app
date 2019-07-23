@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './main_page.dart';
-import './login_page.dart';
+import './info_page.dart';
 
 class ShowPage extends StatelessWidget {
   Widget build (BuildContext context) {
@@ -111,7 +111,7 @@ class ShowPage4 extends StatelessWidget {
       children: <Widget>[
         new Container(
           child: new InkWell(
-            onTap: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new MainPage()), (Route route) => route == null),
+            onTap: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new InfoPage()), (Route route) => route == null),
           ),
           decoration: new BoxDecoration(
             image: new DecorationImage(image: new AssetImage("assets/images/skydoo_show4.png"), fit: BoxFit.cover,),

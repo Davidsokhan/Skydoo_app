@@ -9,11 +9,23 @@ class CreatePage extends StatefulWidget {
 class CreatePageState extends State<CreatePage> {
 
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+  final userNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final userNameField = TextField(
+      controller: userNameController,
+      obscureText: false,
+      style: style,
+      decoration: InputDecoration(
+          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          hintText: "User Name",
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+    );
+
     final emailField = TextField(
       controller: emailController,
       obscureText: false,
@@ -72,6 +84,8 @@ class CreatePageState extends State<CreatePage> {
                   ),
                 ),
                 SizedBox(height: 45.0),
+                userNameField,
+                SizedBox(height: 25.0),
                 emailField,
                 SizedBox(height: 25.0),
                 passwordField,
