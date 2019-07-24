@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class CreatePage extends StatefulWidget {
   @override
@@ -9,9 +11,17 @@ class CreatePage extends StatefulWidget {
 class CreatePageState extends State<CreatePage> {
 
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-  final userNameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  void initState() {
+   userNameController = TextEditingController();
+   emailController = new TextEditingController();
+   passwordController = new TextEditingController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,15 +63,31 @@ class CreatePageState extends State<CreatePage> {
         borderRadius: BorderRadius.circular(30.0),
         color: Color(0xff01A0C7),
         child: MaterialButton(
-          minWidth: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new LoginPage()), (Route route) => route == null),
           child: Text("Create account",
               textAlign: TextAlign.center,
               style: style.copyWith(
                   color: Colors.white, fontWeight: FontWeight.bold)
-                ),
-        ),
+          ),
+          minWidth: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          onPressed: () {
+            if (userNameController.text.isNotEmpty &&
+                  passwordController.text.isNotEmpty) {
+                Firestore.instance
+                  .collection('user')
+                  .add({
+                    "login": userNameController.text,
+                    "password": passwordController.text
+                })
+                .then((result) => {
+                  Navigator.pop(context),
+                  userNameController.clear(),
+                  passwordController.clear(),
+                })
+                .catchError((err) => print(err));
+            Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new LoginPage()), (Route route) => route == null);
+          }
+        }),
     );
 
     return Scaffold(
