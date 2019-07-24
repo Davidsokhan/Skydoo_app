@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './main_page.dart';
 import './create_page.dart';
 import 'pro_menu.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -46,11 +47,12 @@ class LoginPageState extends State<LoginPage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          if (passwordController.text == "admin" && userNameController.text == "admin") {
-            Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new ProPage()), (Route route) => route == null);
-          }
-          else {
-          }
+          Firestore.instance
+          .collection('user')
+          .where("login", isEqualTo: userNameController.text).where("password", isEqualTo: passwordController.text)
+          .snapshots()
+          .listen((data) =>
+          data.documents.forEach((doc) =>  Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new ProPage()), (Route route) => route == null)));
         },
         child: Text("Login",
             textAlign: TextAlign.center,
