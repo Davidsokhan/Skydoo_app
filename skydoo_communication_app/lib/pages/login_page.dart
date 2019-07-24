@@ -103,7 +103,7 @@ class LoginPageState extends State<LoginPage> {
                 SizedBox(height: 35.0),
                 createButton,
                 SizedBox(
-                  height: 192.0,
+                  height: 105.0,
                 ),
               ],
             ),

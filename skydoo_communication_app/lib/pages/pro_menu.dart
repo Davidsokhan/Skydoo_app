@@ -82,7 +82,7 @@ class ProPage extends StatelessWidget {
                 SizedBox(height: 25.0),
                 //optionButton,
                 SizedBox(
-                  height: 202.0,
+                  height: 255.0,
                 ),
               ],
             ),

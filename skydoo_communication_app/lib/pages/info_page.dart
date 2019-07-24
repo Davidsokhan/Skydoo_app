@@ -10,12 +10,14 @@ class InfoPageState extends State<InfoPage> {
 
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   final emailController = TextEditingController();
+  final nameController = TextEditingController();
+  final lastNameController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final nameField = TextField(
-      controller: emailController,
+      controller: nameController,
       obscureText: false,
       style: style,
       decoration: InputDecoration(
@@ -26,7 +28,7 @@ class InfoPageState extends State<InfoPage> {
     );
 
     final lastNameField = TextField(
-      controller: emailController,
+      controller: lastNameController,
       obscureText: false,
       style: style,
       decoration: InputDecoration(
@@ -76,11 +78,7 @@ class InfoPageState extends State<InfoPage> {
 
     return Scaffold(
       backgroundColor: Colors.white24,
-      body: SingleChildScrollView(
-      child: Center(
-        child: Container(
-          color: Colors.white24,
-          child: Padding(
+      body: Padding(
             padding: const EdgeInsets.all(36.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -94,13 +92,22 @@ class InfoPageState extends State<InfoPage> {
                   ),
                 ),
                 SizedBox(height: 45.0),
-                new Row(
-                  children: <Widget>[
-                     nameField,
-                SizedBox(width: 5.0),
-                lastNameField,
-                  ],
-                ),
+                Row(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 50.0,
+                        width: 110.0,
+                        child: nameField,
+                      ),
+                      SizedBox(width: 15.0),
+                      SizedBox(
+                        height: 50.0,
+                        width: 160.0,
+                        child: lastNameField,
+                      ),
+                      //lastNameField,
+                    ],
+                  ),
                 SizedBox(height: 25.0),
                 emailField,
                 SizedBox(height: 25.0),
@@ -108,14 +115,11 @@ class InfoPageState extends State<InfoPage> {
                 SizedBox(height: 35.0),
                 sendButton,
                 SizedBox(
-                  height: 192.0,
+                  height: 117.0,
                 ),
               ],
             ),
           ),
-        ),
-      ),
-        )
     );
   }
 }
