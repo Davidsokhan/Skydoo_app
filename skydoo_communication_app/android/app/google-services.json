@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "1010930681285",
-    "firebase_url": "https://skydooapp.firebaseio.com",
-    "project_id": "skydooapp",
-    "storage_bucket": "skydooapp.appspot.com"
+    "project_number": "727892107208",
+    "firebase_url": "https://skydoo-82719.firebaseio.com",
+    "project_id": "skydoo-82719",
+    "storage_bucket": "skydoo-82719.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1010930681285:android:c762d02b17c0e370",
+        "mobilesdk_app_id": "1:727892107208:android:c762d02b17c0e370",
         "android_client_info": {
           "package_name": "com.example.skydoo_communication_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1010930681285-o8r75c567g2hr0mrjdrij5qkbealqpeo.apps.googleusercontent.com",
+          "client_id": "727892107208-d6hg1i5i8mf5picg3nbuqn3k565l4rfa.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.skydoo_communication_app",
-            "certificate_hash": "1f4ffa7a4593ee6386a09c0dffc2354b3b1e1147"
+            "certificate_hash": "986b1fd9ab010a6b83e67f68bcb4fa5f13bd3c2f"
           }
         },
         {
-          "client_id": "1010930681285-tsd808vvn2ifgfaaj8gkovj2hvh9fcr4.apps.googleusercontent.com",
+          "client_id": "727892107208-25dgiq953g1n1u7sp0bap5bfinmeojou.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCevoL5WCiA87IDQNFEKJKnReX_O6V69FE"
+          "current_key": "AIzaSyCbnnWyuOSXWMK-UI7_YrF_TQ3bcqmqqdk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1010930681285-tsd808vvn2ifgfaaj8gkovj2hvh9fcr4.apps.googleusercontent.com",
+              "client_id": "727892107208-25dgiq953g1n1u7sp0bap5bfinmeojou.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

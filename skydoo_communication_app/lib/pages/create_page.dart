@@ -85,7 +85,7 @@ class CreatePageState extends State<CreatePage> {
                   passwordController.clear(),
                 })
                 .catchError((err) => print(err));
-            Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new LoginPage()), (Route route) => route == null);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
           }
         }),
     );

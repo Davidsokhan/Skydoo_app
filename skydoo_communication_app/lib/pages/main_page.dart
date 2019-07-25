@@ -25,21 +25,6 @@ class MainPage extends StatelessWidget {
             //new Text("Let's Quizz", style: new TextStyle(color: Colors.white, fontSize: 50.0, fontWeight: FontWeight.bold),),
             new Text("Tap to Start the presentation!", style: new TextStyle(color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.bold),),
             SizedBox(height: 110),
-            new Positioned(top: 625, left: 10,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  new InkWell(
-                    child: new IconButton(
-                      icon: new Icon(Icons.keyboard_return),
-                      color: Colors.black,
-                      iconSize: 50.0,
-                      onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new LoginPage()), (Route route) => route == null)
-                    )
-                  )
-                ]
-              )
-            ) 
           ]
         )
       ),

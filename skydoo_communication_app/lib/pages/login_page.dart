@@ -52,7 +52,7 @@ class LoginPageState extends State<LoginPage> {
           .where("login", isEqualTo: userNameController.text).where("password", isEqualTo: passwordController.text)
           .snapshots()
           .listen((data) =>
-          data.documents.forEach((doc) =>  Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new ProPage()), (Route route) => route == null)));
+          data.documents.forEach((doc) => Navigator.push(context, MaterialPageRoute(builder: (context) => ProPage()))));
         },
         child: Text("Login",
             textAlign: TextAlign.center,
@@ -68,7 +68,7 @@ class LoginPageState extends State<LoginPage> {
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new CreatePage()), (Route route) => route == null),
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CreatePage())),
           child: Text("Create account",
               textAlign: TextAlign.center,
               style: style.copyWith(

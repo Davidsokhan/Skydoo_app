@@ -14,7 +14,7 @@ class UserPage extends StatelessWidget {
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new Chat()), (Route route) => route == null),
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Chat())),
           child: Text("Chat",
               textAlign: TextAlign.center,
               style: style.copyWith(

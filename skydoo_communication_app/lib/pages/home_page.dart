@@ -2,10 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:skydoo_communication_app/pages/user_menu.dart';
 import 'login_page.dart';
 import 'user_menu.dart';
+import 'dart:async';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  HomePage({Key key, this.title}) :super(key: key);
+
+  final String title;
+
+  @override
+  State<StatefulWidget> createState() => new HomePageState();
+}
+class HomePageState extends State<HomePage>  {
 
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+
+  Future<bool> _onWillPop() {
+    return showDialog(
+      context: context,
+      builder: (context) => new AlertDialog(
+        title: new Text('Are you sure?'),
+        content: new Text('Do you want to exit an App'),
+        actions: <Widget>[
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: new Text('No'),
+          ),
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: new Text('Yes'),
+          ),
+        ],
+      ),
+    ) ?? false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +45,7 @@ class HomePage extends StatelessWidget {
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new UserPage()), (Route route) => route == null),
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage())),
           child: Text("User",
               textAlign: TextAlign.center,
               style: style.copyWith(
@@ -32,7 +61,7 @@ class HomePage extends StatelessWidget {
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new LoginPage()), (Route route) => route == null),
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
           child: Text("Pro",
               textAlign: TextAlign.center,
               style: style.copyWith(
@@ -57,7 +86,9 @@ class HomePage extends StatelessWidget {
         ),
     );
 
-    return Scaffold(
+    return new WillPopScope(
+       onWillPop: _onWillPop,
+       child: new Scaffold(
       backgroundColor: Colors.white24,
       body: SingleChildScrollView(
       child: Center(
@@ -91,6 +122,23 @@ class HomePage extends StatelessWidget {
         ),
       ),
         )
+       )
     );
   }
+  
+// @override
+//   Widget build(BuildContext context) {
+//     return new WillPopScope(
+//       onWillPop: _onWillPop,
+//       child: new Scaffold(
+//         appBar: new AppBar(
+//           title: new Text("Home Page"),
+//         ),
+//         body: new Center(
+//           child: new Text("Home Page"),
+//         ),
+//       ),
+//     );
+//   }
+
 }
