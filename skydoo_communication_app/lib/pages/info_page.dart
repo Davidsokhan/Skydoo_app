@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pro_menu.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class InfoPage extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class InfoPageState extends State<InfoPage> {
   final emailController = TextEditingController();
   final nameController = TextEditingController();
   final lastNameController = TextEditingController();
-  final passwordController = TextEditingController();
+  final phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +51,8 @@ class InfoPageState extends State<InfoPage> {
     );
 
     final phoneField = TextField(
-      controller: passwordController,
-      obscureText: true,
+      controller: phoneController,
+      obscureText: false,
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -65,15 +66,36 @@ class InfoPageState extends State<InfoPage> {
         borderRadius: BorderRadius.circular(30.0),
         color: Color(0xff01A0C7),
         child: MaterialButton(
-          minWidth: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new ProPage()), (Route route) => route == null),
           child: Text("Send",
               textAlign: TextAlign.center,
               style: style.copyWith(
                   color: Colors.white, fontWeight: FontWeight.bold)
                 ),
-        ),
+          minWidth: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          onPressed: () {
+            if (nameController.text.isNotEmpty && lastNameController.text.isNotEmpty
+            && emailController.text.isNotEmpty && phoneController.text.isNotEmpty) {
+                Firestore.instance
+                  .collection('client')
+                  .add({
+                    "name": nameController.text,
+                    "last name": lastNameController.text,
+                    "email": emailController.text,
+                    "phone": phoneController.text
+                })
+                .then((result) => {
+                  Navigator.pop(context),
+                  nameController.clear(),
+                  lastNameController.clear(),
+                  emailController.clear(),
+                  phoneController.clear(),
+                })
+                .catchError((err) => print(err));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ProPage()));
+            }
+          }
+        )
     );
 
     return Scaffold(
