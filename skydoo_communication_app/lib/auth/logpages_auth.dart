@@ -28,7 +28,7 @@ class Connecticc extends StatelessWidget {
       builder: (context, AsyncSnapshot<String> snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {
           final bool loggedIn = snapshot.hasData;
-          return loggedIn ? HomePagess() : LoginPage(); // ProPage()
+          return loggedIn ? ProPage() : LoginPage(); // ProPage()
         }
         return CircularProgressIndicator();
       },

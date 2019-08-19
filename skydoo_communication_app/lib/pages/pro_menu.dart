@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'info_page.dart';
 import 'main_page.dart';
+import '../auth/auth.dart';
+import '../auth/provider.dart';
+import '../auth/validators.dart';
 
 class ProPage extends StatelessWidget {
 
@@ -56,6 +59,29 @@ class ProPage extends StatelessWidget {
         ),
     );
 
+    final logoutButton = Material(
+        elevation: 5.0,
+        borderRadius: BorderRadius.circular(30.0),
+        color: Color(0xff01A0C7),
+        child: MaterialButton(
+          minWidth: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          onPressed: () async {
+              try {
+                Auth auth = Provider.of(context).auth;
+                await auth.signOut();
+              } catch(e) {
+                print(e);
+              }
+            },
+          child: Text("Logout",
+              textAlign: TextAlign.center,
+              style: style.copyWith(
+                  color: Colors.white, fontWeight: FontWeight.bold)
+                ),
+        ),
+    );
+
     return Scaffold(
       backgroundColor: Colors.white24,
       body: SingleChildScrollView(
@@ -81,6 +107,7 @@ class ProPage extends StatelessWidget {
                 informationButton,
                 SizedBox(height: 25.0),
                 //optionButton,
+                logoutButton,
                 SizedBox(
                   height: 255.0,
                 ),
