@@ -3,6 +3,7 @@ import 'package:skydoo_communication_app/pages/user_menu.dart';
 import 'login_page.dart';
 import 'user_menu.dart';
 import 'dart:async';
+import '../auth/logpages_auth.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) :super(key: key);
@@ -61,7 +62,7 @@ class HomePageState extends State<HomePage>  {
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Connectic())),
           child: Text("Pro",
               textAlign: TextAlign.center,
               style: style.copyWith(
